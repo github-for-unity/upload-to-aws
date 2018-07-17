@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+#
+# script/upload-build
+
+require_relative "./upload"
+upload('build', (ARGV[0] || '') != 'go')

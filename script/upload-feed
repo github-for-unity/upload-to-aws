@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+#
+# script/upload-feed
+
+require_relative "./upload"
+upload('feed', (ARGV[0] || '') != 'go')

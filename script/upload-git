@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+#
+# script/upload-git
+
+require_relative "./upload"
+upload('git', (ARGV[0] || '') != 'go')
