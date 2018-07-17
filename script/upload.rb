@@ -1,6 +1,5 @@
 ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
 
-require 'bundler/setup'
 require 's3_uploader'
 
 def upload(source, dryrun)
@@ -35,7 +34,6 @@ def upload(source, dryrun)
   Dir.chdir "#{source}" do
     Dir["**/*"].select { |f|
       next if File.directory? f
-      next if File.extname == '.gitignore'
 
       ext = File.extname f
       type = content_types[ext] || content_types[""]
