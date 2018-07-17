@@ -42,7 +42,7 @@ def upload(source, dryrun)
       options[:file_metadata] = options[:file_metadata].merge({
         f => {
           'Content-Type' => type,
-          'Content-Disposition' => "#{type}; filename=#{f}",
+          'Content-Disposition' => "#{disp}; filename=#{f}",
         }
       })
     }
