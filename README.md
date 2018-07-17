@@ -1,3 +1,7 @@
+## What it is
+
+Some ruby scripts to upload things to aws. You'll need a ruby, and run `bundle install` to get all the needed gems before running the scripts
+
 ## Before running
 
 Set the following environment variables:
