@@ -1,0 +1,8 @@
+vendor/gems
+vendor/cache
+.bundle
+*.txt
+setenv.sh
+feed/
+build/
+git/
