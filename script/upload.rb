@@ -2,9 +2,10 @@ ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
 
 require 's3_uploader'
 
+PATH = 'unity'.freeze
+BUCKET = 'github-vs'.freeze
+
 def upload(source, dryrun)
-  bucket = 'github-vs'
-  path = 'unity'
 
   abort("Tell me what to upload (git, build or feed)") unless source == 'git' || source == 'build' || source == 'feed'
   puts "Doing a dry run because you didn't tell me to 'go'" if dryrun
@@ -15,7 +16,7 @@ def upload(source, dryrun)
 
   options = {
     :region => 'us-east-1',
-    :destination_dir => path,
+    :destination_dir => PATH.dup,
     :public => true,
     :s3_key => ENV['AWS_S3_ACCESS_KEY_ID'],
     :s3_secret => ENV['AWS_S3_SECRET_ACCESS_KEY'],
@@ -46,12 +47,11 @@ def upload(source, dryrun)
         }
       })
     }
-
-    S3Uploader.upload_directory('.', bucket, options) unless dryrun
+    S3Uploader.upload('.', BUCKET, options) unless dryrun
   end
 
   options[:file_metadata].each do |key, value|
-    msg = "https://ghfvs-installer.github.com/#{path}/#{key} => #{value}"
+    msg = "https://ghfvs-installer.github.com/#{PATH}/#{key} => #{value}"
     puts "Would upload #{msg}" if dryrun
     puts "Uploaded #{msg}" unless dryrun
   end
