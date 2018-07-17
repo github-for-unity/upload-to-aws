@@ -53,6 +53,6 @@ def upload(source, dryrun)
   options[:file_metadata].each do |key, value|
     msg = "https://ghfvs-installer.github.com/#{path}/#{key} => #{value}"
     puts "Would upload #{msg}" if dryrun
-    puts "Would upload #{msg}" unless dryrun
+    puts "Uploaded #{msg}" unless dryrun
   end
 end
